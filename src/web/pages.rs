@@ -13,6 +13,8 @@ mod index;
 #[derive(Embed, Clone)]
 #[folder = "src/web/static"]
 #[include = "*.css"]
+#[include = "*.jpg"]
+#[include = "*.js"]
 struct StaticAssets;
 
 #[derive(Embed)]

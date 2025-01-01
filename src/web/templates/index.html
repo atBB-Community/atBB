@@ -5,10 +5,11 @@ Index
 {% endblock %}
 
 {% block content %}
-<h1>Index</h1>
-<h2>Forums</h2>
+{% include 'components/hero.html' %}
 
-<div class="forums">
+<div class="divider"></div>
+
+<div class="space-y-4">
   {% include 'components/forums.html' %}
 </div>
 

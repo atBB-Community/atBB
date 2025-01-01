@@ -17,3 +17,11 @@ pub struct Forum {
     pub name: String,
     pub description: String,
 }
+
+#[derive(Clone, Deserialize, Serialize)]
+pub struct CategoryForum {
+    pub id: ForumId,
+    pub name: String,
+    pub description: String,
+    pub forums: Vec<Forum>,
+}
