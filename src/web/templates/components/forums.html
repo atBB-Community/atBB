@@ -1,8 +1,55 @@
-{% for forum in forums %}
-<div id="forum-{{ forum.id }}" class="forum" hx-target="#forum-{{ forum.id }}" hx-swap="outerHTML">
-    <p>
-        <span class="forum-name">{{ forum.name }}</span>
-        <span class="forum-description">{{ forum.description }}</span>
-    </p>
+{% for category in forums %}
+<div id="category-{{ category.id }}" class="border-base-300 border rounded-lg">
+  {% for forum in category.forums %}
+  <div id="forum-{{ forum.id }}" class="border-base-300 border bg-secondary text-secondary-content rounded-lg mb-2">
+    {% if loop.first %}
+    <div class="bg-primary primary-content grid grid-cols-5 p-5 rounded-lg">
+      <div class="text-xl font-medium col-span-2 text-primary-content">{{ category.name }}</div>
+      <div class="text-sm font-medium text-right col-span-3 align-text-bottom text-primary-content">{{
+        category.description }}</div>
+    </div>
+    {% endif %}
+    <div class="grid grid-cols-6 p-5">
+      <div class="col-span-1">
+        <div class="mask mask-hexagon w-24">
+          <img src="/static/media/avatar.jpg" />
+        </div>
+      </div>
+      <div class="col-span-3">
+        <div class="text-xl font-medium">{{ forum.name }}</div>
+        <p>{{ forum.description }}</p>
+      </div>
+      <div class="stats shadow col-span-2">
+        <div class="stat">
+          <div class="stat-figure text-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              class="inline-block h-8 w-8 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div class="stat-title">Threads</div>
+          <div class="stat-value">31K</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-figure text-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              class="inline-block h-8 w-8 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4">
+              </path>
+            </svg>
+          </div>
+          <div class="stat-title">Posts</div>
+          <div class="stat-value">420k</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
 </div>
+{% if not loop.last %}
+<div class="divider"></div>
+{% endif %}
 {% endfor %}

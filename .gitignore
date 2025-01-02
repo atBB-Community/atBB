@@ -24,3 +24,6 @@ Cargo.lock
 #  Ignored as environment variables can often contain sensitive information.
 #  .env.example is not ignored and can be used as a template for your own .env.
 .env
+
+# Node modules
+node_modules

@@ -2,7 +2,7 @@
 
 use axum::extract::FromRef;
 
-use crate::models::forum::Forum;
+use crate::models::forum::CategoryForum;
 
 pub(crate) mod routes;
 
@@ -12,7 +12,7 @@ pub struct ApiState {
 }
 
 pub struct ApiStateInner {
-    pub forums: Vec<Forum>,
+    pub forums: Vec<CategoryForum>,
 }
 
 macro_rules! impl_from_ref {
@@ -28,5 +28,5 @@ macro_rules! impl_from_ref {
 }
 
 impl_from_ref! {
-    forums => Vec<Forum>;
+    forums => Vec<CategoryForum>;
 }

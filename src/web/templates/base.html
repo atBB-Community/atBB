@@ -1,3 +1,6 @@
+{% set forum_name = "Bluesky API Touchers" %}
+{% set forum_description = "A forum for discussing the Bluesky API and AT Proto" %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,19 +8,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
     {% block title %}
-      atBB
+      {{ forum_name }}
     {% endblock %}
   </title>
-  <link rel="stylesheet" href="/static/style.css">
-  <script src="https://unpkg.com/htmx.org@1.9.10"
-    integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
-    crossorigin="anonymous"></script>
+  <link href="/static/style.css" rel="stylesheet" type="text/css" />
+  <script src="/static/dist/htmx-1.9.10.js"></script>
 </head>
 
-<body>
-  <main>
+<body data-theme="mocha">
+  <div class="container mx-auto w-full max-w-[75rem] p-4">
+    {% include 'components/navbar.html' %}
     {% block content %}
     {% endblock %}
-  </main>
+  </div>
 </body>
 </html>

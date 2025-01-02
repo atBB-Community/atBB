@@ -1,10 +1,10 @@
 use axum::{extract::State, response::Html};
 
-use crate::models::forum::Forum;
+use crate::models::forum::CategoryForum;
 
 use super::TEMPLATES;
 
-pub async fn index(State(forums): State<Vec<Forum>>) -> Html<String> {
+pub async fn index(State(forums): State<Vec<CategoryForum>>) -> Html<String> {
     let mut ctx = tera::Context::new();
     ctx.insert("forums", &forums);
 
