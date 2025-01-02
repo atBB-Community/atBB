@@ -1,19 +1,20 @@
-{% for forum in forums %}
-<div tabindex="0" id="forum-{{ forum.id }}" class="collapse collapse-open border-base-300 bg-base-200 border">
-  <div class="collapse-title bg-primary primary-content grid grid-cols-5">
-    <div class="text-xl font-medium col-span-2">{{ forum.name }}</div>
-    <div class="text-sm font-medium text-right col-span-3 align-text-bottom">{{ forum.description }}</div>
-  </div>
-  {% for forum in forum.forums %}
-  <div tabindex="0" id="forum-{{ forum.id }}" class="card card-side border-base-300 bg-base-200 border ml-5">
-    <figure>
-      <div class="avatar">
+{% for category in forums %}
+<div id="category-{{ category.id }}" class="border-base-300 border rounded-lg">
+  {% for forum in category.forums %}
+  <div id="forum-{{ forum.id }}" class="border-base-300 border bg-secondary text-secondary-content rounded-lg mb-2">
+    {% if loop.first %}
+    <div class="bg-primary primary-content grid grid-cols-5 p-5 rounded-lg">
+      <div class="text-xl font-medium col-span-2 text-primary-content">{{ category.name }}</div>
+      <div class="text-sm font-medium text-right col-span-3 align-text-bottom text-primary-content">{{
+        category.description }}</div>
+    </div>
+    {% endif %}
+    <div class="grid grid-cols-6 p-5">
+      <div class="col-span-1">
         <div class="mask mask-hexagon w-24">
           <img src="/static/media/avatar.jpg" />
         </div>
       </div>
-    </figure>
-    <div class="card-body grid grid-cols-5">
       <div class="col-span-3">
         <div class="text-xl font-medium">{{ forum.name }}</div>
         <p>{{ forum.description }}</p>
@@ -48,4 +49,7 @@
   </div>
   {% endfor %}
 </div>
+{% if not loop.last %}
+<div class="divider"></div>
+{% endif %}
 {% endfor %}
